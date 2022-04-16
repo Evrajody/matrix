@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220415165934 extends AbstractMigration
+final class Version20220415165934  extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -25,7 +25,7 @@ final class Version20220415165934 extends AbstractMigration
         $this->addSql('CREATE TABLE probleme (id INT AUTO_INCREMENT NOT NULL, affection_id INT NOT NULL, description LONGTEXT NOT NULL, date_panne DATE NOT NULL, date_mise_maintenance DATE DEFAULT NULL, has_solution TINYINT(1) DEFAULT NULL, INDEX IDX_7AB2D7148A6D7BD3 (affection_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE service (id INT AUTO_INCREMENT NOT NULL, equipement_id INT NOT NULL, prestataire_id INT NOT NULL, date_exp DATE NOT NULL, reference VARCHAR(255) NOT NULL, type_service VARCHAR(255) NOT NULL, INDEX IDX_E19D9AD2806F0F5C (equipement_id), INDEX IDX_E19D9AD2BE3DB2B7 (prestataire_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE solution (id INT AUTO_INCREMENT NOT NULL, probleme_resolu_id INT NOT NULL, description LONGTEXT NOT NULL, date_remise DATE DEFAULT NULL, UNIQUE INDEX UNIQ_9F3329DBD222021B (probleme_resolu_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE utilisateur (id INT AUTO_INCREMENT NOT NULL, nom_utilisateur VARCHAR(255) NOT NULL, prenom_utilisateur VARCHAR(255) NOT NULL, email_utilisateur VARCHAR(255) NOT NULL, phone_utilisateur BIGINT NOT NULL, adresse_utilisateur VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE utilisateur (id INT AUTO_INCREMENT NOT NULL, nom_utilisateur VARCHAR(255) NOT NULL, prenom_utilisateur VARCHAR(255) NOT NULL, email_utilisateur VARCHAR(255) NOT NULL, phone_utilisateur VARCHAR(255) NOT NULL, adresse_utilisateur VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE affection ADD CONSTRAINT FK_3E6C3E8D806F0F5C FOREIGN KEY (equipement_id) REFERENCES equipement (id)');
         $this->addSql('ALTER TABLE affection ADD CONSTRAINT FK_3E6C3E8DFB88E14F FOREIGN KEY (utilisateur_id) REFERENCES utilisateur (id)');
         $this->addSql('ALTER TABLE probleme ADD CONSTRAINT FK_7AB2D7148A6D7BD3 FOREIGN KEY (affection_id) REFERENCES affection (id)');

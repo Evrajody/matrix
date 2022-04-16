@@ -22,7 +22,7 @@ class Utilisateur
     #[ORM\Column(type: 'string', length: 255)]
     private $email_utilisateur;
 
-    #[ORM\Column(type: 'bigint')]
+    #[ORM\Column(type: 'string')]
     private $phone_utilisateur;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
