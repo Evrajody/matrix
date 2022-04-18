@@ -5,11 +5,16 @@
 {% endblock %}
 
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" href="{{asset('assets/css/utilisateur.css') }}">
+{% endblock %}
+
+
 {% block cental_content %}
 
 	<!-- Content Wrapper. Contains page content -->
-	<div
-		class="content-wrapper">
+	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="container-fluid">
@@ -21,9 +26,9 @@
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item">
-								<a href="#">Home</a>
+								<a href="#">Dashboard</a>
 							</li>
-							<li class="breadcrumb-item active">Dashboard v1</li>
+							<li class="breadcrumb-item active">Utilisateurs</li>
 						</ol>
 					</div>
 					<!-- /.col -->
@@ -34,7 +39,6 @@
 		</div>
 		<!-- /.content-header -->
 
-
 		<!-- Main content -->
 		<section class="content">
 
@@ -44,45 +48,62 @@
 
 					<div class="col-12">
 						<div class="card">
-							<div class="card-header text-right">
-								<a href="" class="btn btn-primary">   <i class="fa fa-plus" aria-hidden="true"></i> Nouvel utilisateur</a>
+							<div class="card-header d-flex justify-content-between">
+							 <input type="search" id="usersearcher" class="form-control col-6" placeholder="Trouver un utilisateur ... ">
+								<div class="col-6 text-right">
+								<a href="" class="btn btn-primary ">
+									<i class="fa fa-plus" aria-hidden="true"></i>
+									Nouvel utilisateur
+								</a>
+								</div>
 							</div>
 
 							<div class="card-body">
-								<table id="example2" class="table table-bordered table-hover">
-									<thead>
-										<tr>
-											<th>Nom utilisateur</th>
-											<th>Prenom utilisateur</th>
-											<th>Telephones</th>
-											<th>Adresse</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
+								<div class="table-responsive">
+									<table id="userstable" class="table table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>Nom utilisateurs</th>
+												<th>Prenom utilisateurs</th>
+												<th>Telephones</th>
+												<th>Emails</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
 
-									{% for user in allUsers %}
-									 
-										<tr>
-											<td>  {{ user.nomUtilisateur }} </td>
-											<td>{{ user.prenomUtilisateur }} </td>
-											<td>{{ user.phoneUtilisateur }} </td>
-											<td> {{ user.emailUtilisateur }} </td>
-											<td> 
-											   
-											</td>
-										</tr>
+											{% for user in allUsers %}
+												<tr>
+													<td>
+														{{ user.nomUtilisateur }}
+													</td>
+													<td>{{ user.prenomUtilisateur }}
+													</td>
+													<td>{{ user.phoneUtilisateur }}
+													</td>
+													<td>
+														{{ user.emailUtilisateur }}
+													</td>
+													<td>
+													
+													</td>
+												</tr>
 
-										{% else %}
-								 
-										<tr>
-											<td colspan="5" class="text-center"> Pas d'utilisateur pour le moment </td>
-										</tr>
+											{% else %}
 
-									{% endfor %}
+												<tr>
+													<td colspan="5" class="text-center">
+														Pas d'utilisateur pour le moment
+													</td>
+												</tr>
 
-									</tbody>
-								</table>
+											{% endfor %}
+
+										</tbody>
+									</table>
+
+								</div>
+
 							</div>
 							<!-- /.card-body -->
 						</div>
@@ -99,5 +120,37 @@
 	<!-- /.content-wrapper -->
 
 
-{% endblock %}
+	{% block javascripts %}
+		<script src="{{ asset('assets/js/jquery.dataTables.min.js') }} "></script>
+		<script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
+		<script type="text/javascript">
+		   var searchField = $('#usersearcher')
+		   var userTable = $('#userstable').DataTable({
+				"paging": true,
+				"lengthChange": false,
+				"searching": true,
+				"ordering": true,
+				"info": true,
+				"autoWidth": false,
+				"responsive": true,
+				language: {
+                    url: "{{asset('assets/tools/datatable_fr.json') }} "
+                }
+		
+			});
 
+   
+             searchField.keyup(function(){
+				 console.log(userTable);
+				 userTable.search(searchField.val()).draw();
+			 })
+			
+
+
+		</script>
+
+
+	{% endblock %}
+
+
+{% endblock %}

@@ -8,7 +8,8 @@
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-		<link rel="stylesheet" href="assets/css/adminlte.css">
+		<link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
+		{% block stylesheets %}{% endblock %}
 	</head>
 
 
@@ -28,8 +29,11 @@
 		</div>
 		<!-- ./wrapper -->
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		<script src="assets/js/adminlte.min.js"></script>
+		<script src=" {{ asset('assets/js/jquery.min.js')  }}"></script>
+		<script src=" {{ asset('assets/js/bootstrap.bundle.min.js')  }} "></script>
+		<script src=" {{ asset('assets/js/adminlte.min.js')  }} "></script>
+		{% block javascripts %}{% endblock %}
+
+
 	</body>
 </html>
