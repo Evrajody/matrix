@@ -19,4 +19,14 @@ class UtilisateurController extends AbstractController
 
         return $this->render('utilisateur/utilisateur.html.twig', compact("allUsers"));
     }
+
+
+    /**
+    * @Route("/add/utilisateur",  name="add_utilisateur")
+    */
+    public function addUtilisateur(): Response 
+    {
+
+        return $this->render('utilisateur/add_utilisateur.html.twig');
+    }
 }

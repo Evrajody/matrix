@@ -14,7 +14,8 @@
 {% block cental_content %}
 
 	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
+	<div
+		class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="container-fluid">
@@ -49,12 +50,12 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header d-flex justify-content-between">
-							 <input type="search" id="usersearcher" class="form-control col-6" placeholder="Trouver un utilisateur ... ">
+								<input type="search" id="usersearcher" class="form-control col-6" placeholder="Trouver un utilisateur ... ">
 								<div class="col-6 text-right">
-								<a href="" class="btn btn-primary ">
-									<i class="fa fa-plus" aria-hidden="true"></i>
-									Nouvel utilisateur
-								</a>
+									<a href=" {{ path('add_utilisateur') }} " class="btn btn-primary ">
+										<i class="fa fa-plus" aria-hidden="true"></i>
+										Nouvel utilisateur
+									</a>
 								</div>
 							</div>
 
@@ -85,7 +86,6 @@
 														{{ user.emailUtilisateur }}
 													</td>
 													<td>
-													
 													</td>
 												</tr>
 
@@ -124,29 +124,26 @@
 		<script src="{{ asset('assets/js/jquery.dataTables.min.js') }} "></script>
 		<script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
 		<script type="text/javascript">
-		   var searchField = $('#usersearcher')
-		   var userTable = $('#userstable').DataTable({
-				"paging": true,
-				"lengthChange": false,
-				"searching": true,
-				"ordering": true,
-				"info": true,
-				"autoWidth": false,
-				"responsive": true,
-				language: {
-                    url: "{{asset('assets/tools/datatable_fr.json') }} "
-                }
-		
-			});
+			var searchField = $('#usersearcher')
+			var userTable = $('#userstable').DataTable({
+					"paging": true,
+					"lengthChange": false,
+					"searching": true,
+					"ordering": true,
+					"info": true,
+					"autoWidth": false,
+					"responsive": true,
+					language: {
+					url: "{{ asset('assets/tools/datatable_fr.json') }}"
+			}
 
-   
-             searchField.keyup(function(){
-				 console.log(userTable);
-				 userTable.search(searchField.val()).draw();
-			 })
-			
+		});
 
 
+    searchField.keyup(function () {
+				console.log(userTable);
+				userTable.search(searchField.val()).draw();
+	})
 		</script>
 
 
