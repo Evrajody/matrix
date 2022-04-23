@@ -46,6 +46,7 @@ class UtilisateurType extends AbstractType
                 'required' => true,
                "attr" => [
                     "class" => "form-control",
+                    'placeholder' => "XXXXXXXX"
                 ]
             ])
 
@@ -53,6 +54,7 @@ class UtilisateurType extends AbstractType
                 'required' => true,
                  "attr" => [
                     "class" => "form-control",
+                    'placeholder' =>"Entrez l'adresse de l'utilisateur",
                 ]
             ])
 
@@ -63,7 +65,8 @@ class UtilisateurType extends AbstractType
                 'required' => true,
                 "attr" => [
                     "class" => "form-control datetimepicker-input",
-                    'data-target'=>"#dateNaissance"
+                    'data-target'=>"#dateNaissance",
+                    'placeholder'=>"dd/mm/yyyy"
                
                 ]
             ])

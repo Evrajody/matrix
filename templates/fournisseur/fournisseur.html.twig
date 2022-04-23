@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-	Matrix - Utilisateurs
+	Matrix - Fournisseur
 {% endblock %}
 
 
@@ -21,7 +21,7 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1 class="m-0">Utilisateurs</h1>
+						<h1 class="m-0">Fournisseur</h1>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-6">
@@ -29,7 +29,7 @@
 							<li class="breadcrumb-item">
 								<a href="#">Dashboard</a>
 							</li>
-							<li class="breadcrumb-item active">Utilisateurs</li>
+							<li class="breadcrumb-item active">Fournisseur</li>
 						</ol>
 					</div>
 					<!-- /.col -->
@@ -50,22 +50,22 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header d-flex justify-content-between">
-								<input type="search" id="usersearcher" class="form-control col-6" placeholder="Trouver un utilisateur ... ">
+								<input type="search" id="fournisseursearcher" class="form-control col-6" placeholder="Trouver un fournisseur ... ">
 								<div class="col-6 text-right">
-									<a href=" {{ path('add_utilisateur') }} " class="btn btn-primary ">
+									<a href=" {{ path('add_fournisseur') }} " class="btn btn-primary ">
 										<i class="fa fa-plus" aria-hidden="true"></i>
-										Nouvel utilisateur
+										Nouveau Fournisseur
 									</a>
 								</div>
 							</div>
 
 							<div class="card-body">
 								<div class="table-responsive">
-									<table id="userstable" class="table table-bordered table-hover">
+									<table id="fournisseurtable" class="table table-bordered table-hover">
 										<thead>
 											<tr>
-												<th>Nom utilisateurs</th>
-												<th>Prenom utilisateurs</th>
+												<th>Nom fournisseur</th>
+												<th>Prenom fournisseur</th>
 												<th>Telephones</th>
 												<th>Emails</th>
 												<th>Actions</th>
@@ -73,17 +73,17 @@
 										</thead>
 										<tbody>
 
-											{% for user in allUsers %}
+											{% for fournisseur in allFournisseurs %}
 												<tr>
 													<td>
-														{{ user.nomUtilisateur }}
+														{{ fournisseur.nomFournisseur }}
 													</td>
-													<td>{{ user.prenomUtilisateur }}
+													<td>{{ fournisseur.prenomFournisseur }}
 													</td>
-													<td>{{ user.phoneUtilisateur }}
+													<td>{{ fournisseur.phoneFournisseur }}
 													</td>
 													<td>
-														{{ user.emailUtilisateur }}
+														{{ fournisseur.emailFournisseur }}
 													</td>
 													<td>
 													<div class="dropdown">
@@ -91,9 +91,9 @@
 															Action
 														</a>
 														<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-															<li><a class="dropdown-item" href=" {{ path('edit_utilisateur', {'id': user.id} )  }}  ">Editer</a></li>
+															<li><a class="dropdown-item" href=" {{path('edit_fournisseur', {'id': fournisseur.id})}} ">Editer</a></li>
 															<li><hr class="dropdown-divider"></li>
-															<li><a  href=" {{ path('profile_utilisateur', {'id': user.id}) }}  " class="dropdown-item" href="#">Voir profile</a></li>
+															<li><a  href=" #  " class="dropdown-item" href="#">Voir profile</a></li>
 														</ul>
 													</div>
 
@@ -104,7 +104,7 @@
 
 												<tr>
 													<td colspan="5" class="text-center">
-														Pas d'utilisateur pour le moment
+														Pas de fournisseur pour le moment
 													</td>
 												</tr>
 
@@ -144,8 +144,8 @@
 		{% endfor %}
 
 		<script type="text/javascript">
-				var searchField = $('#usersearcher')
-				var userTable = $('#userstable').DataTable({
+				var searchField = $('#fournisseursearcher')
+				var fournisseurTable = $('#fournisseurtable').DataTable({
 						"paging": true,
 						"lengthChange": false,
 						"searching": true,
@@ -159,8 +159,8 @@
 			});
 
 			searchField.keyup(function () {
-						console.log(userTable);
-						userTable.search(searchField.val()).draw();
+						console.log(fournisseurTable);
+						fournisseurTable.search(searchField.val()).draw();
 			})
 
 		</script>

@@ -1,12 +1,12 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-	Matrix - Add - Utilisateurs
+	Matrix - Add - Fournisseurs
 {% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap4.min.css') }}">
-	<link rel="stylesheet" href="{{asset('assets/css/utilisateur.css') }}">
+	<link rel="stylesheet" href="{{asset('assets/css/fournisseur.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/tempusdominus.min.css') }} ">
 {% endblock %}
 
@@ -21,7 +21,7 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1 class="m-0">Utilisateurs</h1>
+						<h1 class="m-0">Fournisseur</h1>
 					</div>
 					<!-- /.col -->
 					<div class="col-sm-6">
@@ -29,8 +29,8 @@
 							<li class="breadcrumb-item">
 								<a href="#">Dashboard</a>
 							</li>
-							<li class="breadcrumb-item active">Utilisateurs</li>
-							<li class="breadcrumb-item active">Nouvel utilsateur</li>
+							<li class="breadcrumb-item active">Fournisseur</li>
+							<li class="breadcrumb-item active">Nouveau Fournisseur</li>
 						</ol>
 					</div>
 					<!-- /.col -->
@@ -56,26 +56,26 @@
 							<div class="card card-primary">
 								<div class="card-header">
 									<h3 class="card-title">
-										Informations sur l'utilisateur
+										Informations le fournisseur
 									</h3>
 								</div>
-								{{ form_start(userForm) }}
+								{{ form_start(fournisseurForm) }}
 								<div class="row">
 									<div class="col-md-6">
 										<div class="card-body">
 											<div class="form-group">
 												<label for="Nom">Nom</label>
-												{{ form_widget(userForm.nom_utilisateur) }}
+												{{ form_widget(fournisseurForm.nom_fournisseur) }}
 											</div>
 
 											<div class="form-group">
 												<label for="Prenom">Prenom</label>
-												{{ form_widget(userForm.prenom_utilisateur) }}
+												{{ form_widget(fournisseurForm.prenom_fournisseur) }}
 											</div>
 
 											<div class="form-group">
 												<label for="Email">Email</label>
-												{{ form_widget(userForm.email_utilisateur) }}
+												{{ form_widget(fournisseurForm.email_fournisseur) }}
 											</div>
 
 											<div class="form-group">
@@ -88,28 +88,23 @@
 									<div class="col-md-6">
 										<div class="card-body">
 										  <div class="form-group">
-												<label for="Date">Date de naissance</label>
-											    <div class="input-group date" id="dateNaissance" data-target-input="nearest">
-                                                   {{ form_widget(userForm.date_naissance) }}
-													<div class="input-group-append" data-target="#dateNaissance" data-toggle="datetimepicker">
-														<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-													</div>
-												</div>
+												<label for="Date">Etablissement</label>
+											   <input type="text" class="form-control"  placeholder="Etablissement Coming soon......." disabled>
 											</div>
 
 											<div class="form-group">
 												<label for="Telephone">Telephone</label>
-										   	{{ form_widget(userForm.phone_utilisateur) }}
+										   	{{ form_widget(fournisseurForm.phone_fournisseur) }}
 											</div>
 
 											<div class="form-group">
 												<label for="Adresse">Adresse</label>
-												{{ form_widget(userForm.adresse_utilisateur) }}
+												{{ form_widget(fournisseurForm.adresse_fournisseur) }}
 											</div>
 
 											<label for="Photo">Photo</label>
 											<div class="custom-file">
-												{{ form_widget(userForm.photo, {'id': 'customFile'}) }}
+											 <input type="file" class="form-control"  placeholder="Photo Coming soon......." disabled>
 												<label class="custom-file-label" for="customFile">Choisir un fichier</label>
 											</div>
 										</div>
@@ -117,12 +112,12 @@
 								</div>
 
 								<div class="card-footer text-right">
-							     	{{ form_widget(userForm.submit) }}
+							     	{{ form_widget(fournisseurForm.submit) }}
 								</div>
 
-								 {{ form_rest(userForm) }}
+								 {{ form_rest(fournisseurForm) }}
 
-								{{ form_end(userForm) }}
+								{{ form_end(fournisseurForm) }}
 
 							</div>
 							<!-- /.card -->
