@@ -29,4 +29,14 @@ class UtilisateurController extends AbstractController
 
         return $this->render('utilisateur/add_utilisateur.html.twig');
     }
+
+
+    /**
+    * @Route("/add/utilisateur/profile",  name="profile_utilisateur")
+    */
+    public function showUtilisateur(): Response 
+    {
+
+        return $this->render('utilisateur/see_utilisateur.html.twig');
+    }
 }

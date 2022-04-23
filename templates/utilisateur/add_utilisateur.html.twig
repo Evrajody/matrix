@@ -46,45 +46,71 @@
 			<div class="container-fluid">
 
 				<div class="container-fluid">
-					<div class="row">
+					<div
+						class="row">
 						<!-- left column -->
-						<div class="col-md-7">
+						<div class="col">
 							<!-- general form elements -->
 							<div class="card card-primary">
 								<div class="card-header">
 									<h3 class="card-title">
-										Information sur l'utilisateur
+										Informations sur l'utilisateur
 									</h3>
 								</div>
 
-								<form>
-									<div class="card-body">
-										<div class="form-group">
-											<label for="exampleInputEmail1">Nom</label>
-											<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom de l'utilisateur">
+								<form action="">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="card-body">
+												<div class="form-group">
+													<label for="exampleInputEmail1">Nom</label>
+													<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom de l'utilisateur">
+												</div>
+												<div class="form-group">
+													<label for="exampleInputFile">Email</label>
+													<input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+												</div>
+												<div class="form-group">
+													<label for="exampleInputFile">Sexe</label>
+													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
+												</div>
+
+												<div class="form-group">
+													<label for="exampleInputFile">Date de naissance</label>
+													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
+												</div>
+											</div>
 										</div>
-										<div class="form-group">
-											<label for="exampleInputPassword1">Prenom</label>
-											<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Prenom de l'utilisateur">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputFile">Email</label>
-											<input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputFile">Telephone</label>
-											<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputFile">Adresse</label>
-											<input type="address" class="form-control" id="exampleInputPassword1" placeholder="Adresse">
+
+										<div class="col-md-6">
+											<div class="card-body">
+												<div class="form-group">
+													<label for="exampleInputPassword1">Prenom</label>
+													<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Prenom de l'utilisateur">
+												</div>
+												<div class="form-group">
+													<label for="exampleInputFile">Telephone</label>
+													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
+												</div>
+												<div class="form-group">
+													<label for="exampleInputFile">Adresse</label>
+													<input type="address" class="form-control" id="exampleInputPassword1" placeholder="Adresse">
+												</div>
+												<label for="exampleInputFile">Photo</label>
+												<div class="custom-file">
+													<input type="file" class="custom-file-input" id="customFile">
+													<label class="custom-file-label" for="customFile">Choisir un fichier</label>
+												</div>
+											</div>
 										</div>
 									</div>
-					
-									<div class="card-footer">
-										<button type="submit" class="btn btn-primary">Submit</button>
+
+									<div class="card-footer text-right">
+										<input type="submit" class="btn btn-primary" value="Enregistrer">
 									</div>
 								</form>
+
+
 							</div>
 							<!-- /.card -->
 
@@ -105,7 +131,18 @@
 		<!-- /.content-wrapper -->
 
 
-		{% block javascripts %}{% endblock %}
+		{% block javascripts %}
+
+		    <script src=" {{asset('assets/js/custom_input.min.js')}} "></script>
+
+			<script>
+				$(function () {
+					bsCustomFileInput.init();
+				});
+	    	</script>
+		
+		
+		{% endblock %}
 
 
 	{% endblock %}
