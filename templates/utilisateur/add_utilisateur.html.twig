@@ -7,6 +7,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap4.min.css') }}">
 	<link rel="stylesheet" href="{{asset('assets/css/utilisateur.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/tempusdominus.min.css') }} ">
 {% endblock %}
 
 
@@ -49,7 +50,8 @@
 					<div
 						class="row">
 						<!-- left column -->
-						<div class="col">
+						<div
+							class="col">
 							<!-- general form elements -->
 							<div class="card card-primary">
 								<div class="card-header">
@@ -57,70 +59,77 @@
 										Informations sur l'utilisateur
 									</h3>
 								</div>
-
-								<form action="">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="card-body">
-												<div class="form-group">
-													<label for="exampleInputEmail1">Nom</label>
-													<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom de l'utilisateur">
-												</div>
-												<div class="form-group">
-													<label for="exampleInputFile">Email</label>
-													<input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-												</div>
-												<div class="form-group">
-													<label for="exampleInputFile">Sexe</label>
-													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
-												</div>
-
-												<div class="form-group">
-													<label for="exampleInputFile">Date de naissance</label>
-													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
-												</div>
+								{{ form_start(userForm) }}
+								<div class="row">
+									<div class="col-md-6">
+										<div class="card-body">
+											<div class="form-group">
+												<label for="Nom">Nom</label>
+												{{ form_widget(userForm.nom_utilisateur) }}
 											</div>
-										</div>
 
-										<div class="col-md-6">
-											<div class="card-body">
-												<div class="form-group">
-													<label for="exampleInputPassword1">Prenom</label>
-													<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Prenom de l'utilisateur">
-												</div>
-												<div class="form-group">
-													<label for="exampleInputFile">Telephone</label>
-													<input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
-												</div>
-												<div class="form-group">
-													<label for="exampleInputFile">Adresse</label>
-													<input type="address" class="form-control" id="exampleInputPassword1" placeholder="Adresse">
-												</div>
-												<label for="exampleInputFile">Photo</label>
-												<div class="custom-file">
-													<input type="file" class="custom-file-input" id="customFile">
-													<label class="custom-file-label" for="customFile">Choisir un fichier</label>
-												</div>
+											<div class="form-group">
+												<label for="Prenom">Prenom</label>
+												{{ form_widget(userForm.prenom_utilisateur) }}
+											</div>
+
+											<div class="form-group">
+												<label for="Email">Email</label>
+												{{ form_widget(userForm.email_utilisateur) }}
+											</div>
+
+											<div class="form-group">
+												<label for="exampleInputFile">Sexe</label>
+												<input type="text" class="form-control"  placeholder="Sexe" disabled>
 											</div>
 										</div>
 									</div>
 
-									<div class="card-footer text-right">
-										<input type="submit" class="btn btn-primary" value="Enregistrer">
-									</div>
-								</form>
+									<div class="col-md-6">
+										<div class="card-body">
+										  <div class="form-group">
+												<label for="Date">Date de naissance</label>
+											    <div class="input-group date" id="dateNaissance" data-target-input="nearest">
+                                                   {{ form_widget(userForm.date_naissance) }}
+													<div class="input-group-append" data-target="#dateNaissance" data-toggle="datetimepicker">
+														<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+													</div>
+												</div>
+											</div>
 
+											<div class="form-group">
+												<label for="Telephone">Telephone</label>
+										   	{{ form_widget(userForm.phone_utilisateur) }}
+											</div>
+
+											<div class="form-group">
+												<label for="Adresse">Adresse</label>
+												{{ form_widget(userForm.adresse_utilisateur) }}
+											</div>
+
+											<label for="Photo">Photo</label>
+											<div class="custom-file">
+												{{ form_widget(userForm.photo, {'id': 'customFile'}) }}
+												<label class="custom-file-label" for="customFile">Choisir un fichier</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card-footer text-right">
+							     	{{ form_widget(userForm.submit) }}
+								</div>
+
+								 {{ form_rest(userForm) }}
+
+								{{ form_end(userForm) }}
 
 							</div>
 							<!-- /.card -->
-
-
 						</div>
-
 
 					</div>
 					<!-- /.row -->
-
 
 				</div>
 
@@ -128,20 +137,21 @@
 			<!-- /.content -->
 
 		</div>
-		<!-- /.content-wrapper -->
-
 
 		{% block javascripts %}
 
-		    <script src=" {{asset('assets/js/custom_input.min.js')}} "></script>
-
-			<script>
+			<script src=" {{asset('assets/js/custom_input.min.js')}} "></script>
+			<script src=" {{asset('assets/js/moment.min.js')}}"></script>
+			<script src=" {{asset('assets/js/tempusdominus.min.js')}}"></script>
+			<script type="text/javascript">
+			
 				$(function () {
 					bsCustomFileInput.init();
+			        $('#dateNaissance').datetimepicker({ format: 'DD/MM/yyyy'  });
 				});
-	    	</script>
-		
-		
+
+			</script>
+
 		{% endblock %}
 
 

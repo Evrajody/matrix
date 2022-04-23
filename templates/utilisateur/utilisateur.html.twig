@@ -86,13 +86,12 @@
 														{{ user.emailUtilisateur }}
 													</td>
 													<td>
-
 													<div class="dropdown">
 														<a class="btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 															Action
 														</a>
 														<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-															<li><a class="dropdown-item" href="#">Editer</a></li>
+															<li><a class="dropdown-item" href=" {{ path('edit_utilisateur', {'id': user.id} )  }}  ">Editer</a></li>
 															<li><hr class="dropdown-divider"></li>
 															<li><a  href=" {{ path('profile_utilisateur') }}  " class="dropdown-item" href="#">Voir profile</a></li>
 														</ul>

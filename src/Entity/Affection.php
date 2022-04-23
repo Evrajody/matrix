@@ -19,10 +19,7 @@ class Affection
     #[ORM\JoinColumn(nullable: false)]
     private $equipement;
 
-    #[ORM\ManyToOne(targetEntity: Utilisateur::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $utilisateur;
-
+    
     #[ORM\Column(type: 'date')]
     private $date_debut;
 
@@ -31,6 +28,10 @@ class Affection
 
     #[ORM\OneToMany(mappedBy: 'affection', targetEntity: Probleme::class)]
     private $problemes;
+
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'affections')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $utilisateur;
 
     public function __construct()
     {
@@ -50,18 +51,6 @@ class Affection
     public function setEquipement(?Equipement $equipement): self
     {
         $this->equipement = $equipement;
-
-        return $this;
-    }
-
-    public function getUtilisateur(): ?Utilisateur
-    {
-        return $this->utilisateur;
-    }
-
-    public function setUtilisateur(?Utilisateur $utilisateur): self
-    {
-        $this->utilisateur = $utilisateur;
 
         return $this;
     }
@@ -116,6 +105,18 @@ class Affection
                 $probleme->setAffection(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }
