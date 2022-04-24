@@ -120,9 +120,8 @@
 							<div class="card-body">
 								<div class="tab-content grid">
 									<div class="active tab-pane" id="activity">
-
                                     <div class="row">
-                                    {% for row in 1..6 %}
+                                    {% for userAffection in user.getAffections %}
                                        <div class="col-md-4 mb-2">
 											<div class="card">
 												<div class="card-body">
@@ -147,6 +146,15 @@
 												</div>
 											</div>
 										</div>
+
+										{% else %}
+
+										<div class="col-12 text-center">
+										Pas d'equipement affecte a cet utilisateur pour le moment
+										</div>
+
+
+
                                     {% endfor %}
 
                                   </div>

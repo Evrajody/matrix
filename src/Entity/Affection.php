@@ -19,7 +19,6 @@ class Affection
     #[ORM\JoinColumn(nullable: false)]
     private $equipement;
 
-    
     #[ORM\Column(type: 'date')]
     private $date_debut;
 
